@@ -17,10 +17,12 @@ connectDB();
 
 // Static folder
 const publicPath = path.join(__dirname, "public");
-console.log("Static folder:", publicPath);
 app.use(express.static(publicPath));
 
 /* ---------------- API ROUTES ---------------- */
+// ... (existing routes)
+
+/* ---------------- SERVER ---------------- */
 
 // Get all expenses
 app.get("/api/expenses", async (req, res) => {
@@ -76,13 +78,8 @@ app.get("/api/expenses/filter", async (req, res) => {
   }
 });
 
-/* ---------------- FRONTEND ROUTE ---------------- */
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
-});
-
 /* ---------------- SERVER ---------------- */
+
 
 const PORT = process.env.PORT || 5000;
 
