@@ -7,8 +7,9 @@ import ChartsSection from "./components/ChartsSection";
 import FilterCard from "./components/FilterCard";
 import EditModal from "./components/EditModal";
 import "./index.css";
+import API_URL from "./config";
 
-const API_URL = "http://localhost:5000/api/expenses";
+const EXPENSES_API = `${API_URL}/expenses`;
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -21,8 +22,8 @@ function App() {
     setLoading(true);
     try {
       const url = filter
-        ? `${API_URL}/filter?from=${filter.from}&to=${filter.to}`
-        : API_URL;
+        ? `${EXPENSES_API}/filter?from=${filter.from}&to=${filter.to}`
+        : EXPENSES_API;
       const res = await axios.get(url);
       setExpenses(res.data);
     } catch (error) {
@@ -36,7 +37,7 @@ function App() {
   const deleteExpense = async (id) => {
     if (!window.confirm("Are you sure you want to delete this expense?")) return;
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await axios.delete(`${EXPENSES_API}/${id}`);
       fetchExpenses();
     } catch (error) {
       console.error("Error deleting expense:", error);
@@ -46,7 +47,7 @@ function App() {
   // Update an expense
   const updateExpense = async (id, updatedData) => {
     try {
-      await axios.put(`${API_URL}/${id}`, updatedData);
+      await axios.put(`${EXPENSES_API}/${id}`, updatedData);
       setIsEditModalOpen(false);
       fetchExpenses();
     } catch (error) {

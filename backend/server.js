@@ -20,9 +20,6 @@ const publicPath = path.join(__dirname, "public");
 app.use(express.static(publicPath));
 
 /* ---------------- API ROUTES ---------------- */
-// ... (existing routes)
-
-/* ---------------- SERVER ---------------- */
 
 // Get all expenses
 app.get("/api/expenses", async (req, res) => {
