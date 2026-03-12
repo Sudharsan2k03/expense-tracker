@@ -7,9 +7,9 @@ import ChartsSection from "./components/ChartsSection";
 import FilterCard from "./components/FilterCard";
 import EditModal from "./components/EditModal";
 import "./index.css";
-import API_URL from "./config";
+import { API_BASE_URL } from "./config/api";
 
-const EXPENSES_API = `${API_URL}/expenses`;
+const EXPENSES_API = `${API_BASE_URL}/api/expenses`;
 
 function App() {
   const [expenses, setExpenses] = useState([]);

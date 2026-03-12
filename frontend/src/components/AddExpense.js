@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Flatpickr from "react-flatpickr";
 import CustomSelect from "./CustomSelect";
-import API_URL from "../config";
+import { API_BASE_URL } from "../config/api";
 
 function AddExpense({ fetchExpenses }) {
   const [title, setTitle] = useState("");
@@ -18,7 +18,7 @@ function AddExpense({ fetchExpenses }) {
     const formattedDate = date instanceof Date ? date.toISOString().split("T")[0] : date;
 
     try {
-      await axios.post(`${API_URL}/expenses`, {
+      await axios.post(`${API_BASE_URL}/api/expenses`, {
         title,
         amount: Number(amount),
         category,
